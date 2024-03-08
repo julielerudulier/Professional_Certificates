@@ -5,4 +5,4 @@ Week 7's assignments include:
 
 * [Problem Set 7](https://cs50.harvard.edu/x/2023/psets/7/):
   - [Movies](https://cs50.harvard.edu/x/2023/psets/7/movies/)
-  - [Credit](https://cs50.harvard.edu/x/2023/psets/7/fiftyville/)
+  - [Fiftyville](https://cs50.harvard.edu/x/2023/psets/7/fiftyville/)
