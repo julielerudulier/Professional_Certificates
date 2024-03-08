@@ -1,0 +1,289 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    TITLE
+{% endblock %}
+
+{% block main %}
+
+    <div id="main">
+        <video id="background-video" autoplay loop muted poster="static/images/arena5.png">
+            <source src="static/videos/vid_artist.mp4" type="video/mp4">
+        </video>
+        <audio id="bgaudio" src="static/sounds/index.mp3" loop></audio>
+        <audio id="clickaudio" src="static/sounds/click.mp3"></audio>
+        <p id="back1" class="back">GO BACK</p>
+        <p class="back" id="speaker1" style="margin-left: 10%">SOUND OFF</p>
+        <div class="vs_bg_left"></div>
+        <div class="vs_bg_right"></div>
+        <div class="left_artist">
+            <h4>Select Artist</h4>
+            <form autocomplete="off">
+                <div class="autocomplete" id="autocomplete" style="z-index: 2;">
+                    <textarea id="myInput" onchange="fadeIn()" style="width: 88%; padding-top: 17%; position: relative; z-index: 2;" placeholder="Type Artist Name Here..." rows="3"></textarea>
+                </div>
+                <div class="fade" id="divArtist" style="z-index: 0; margin-top: -4%;">
+                    <input onclick="clearInput()" value="CHANGE ARTIST" class="edit_btn" type="button">
+                    <input onclick="saveArtist()" value="SAVE" class="save_btn" type="button">
+                    <p class="save">CLICK SAVE TO CONTINUE</p>
+                </div>
+            </form>
+        </div>
+        <div class="middle">
+            <p class="vs" style="margin-top: 7%;">VS</p>
+        </div>
+        <div class="right_artist">
+            <h4>Opponent</h4>
+            <textarea id="opponent" style="width: 85%; padding-top: 17%;" rows="3";>?</textarea>
+            <div class="fade" id="divOpponent" style="margin-top: -4%;">
+                <input onclick="clearOpponent()" value="CHANGE OPPONENT" class="edit_btn" type="button">
+                <input onclick="saveOpponent()" value="SAVE" class="save_btn" type="button">
+                <p class="save">SAVE OPPONENT TO CONTINUE</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Autocomplete search -->
+    <script type="text/javascript">
+        function autocomplete(inp, arr) {
+        var currentFocus;
+        var bgaudio = document.getElementById("bgaudio");
+            bgaudio.volume = 0.5;
+            bgaudio.play();
+        inp.addEventListener("input", function(e) {
+            var a, b, i, val = this.value;
+            closeAllLists();
+            if (!val) { return false;}
+            currentFocus = -1;
+            a = document.createElement("DIV");
+            a.setAttribute("id", this.id + "autocomplete-list");
+            a.setAttribute("class", "autocomplete-items");
+            this.parentNode.appendChild(a);
+            for (i = 0; i < arr.length; i++) {
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                b = document.createElement("DIV");
+                b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                b.innerHTML += arr[i].substr(val.length);
+                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                b.addEventListener("click", function(e) {
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    closeAllLists();
+                });
+                a.appendChild(b);
+                }
+            }
+        });
+        inp.addEventListener("keydown", function(e) {
+            var x = document.getElementById(this.id + "autocomplete-list");
+            if (x) x = x.getElementsByTagName("div");
+            if (e.keyCode == 40) {
+                currentFocus++;
+                addActive(x);
+            } else if (e.keyCode == 38) {
+                currentFocus--;
+                addActive(x);
+            } else if (e.keyCode == 13) {
+                e.preventDefault();
+                if (currentFocus > -1) {
+                if (x) x[currentFocus].click();
+                }
+            }
+        });
+        function addActive(x) {
+            if (!x) return false;
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            x[currentFocus].classList.add("autocomplete-active");
+        }
+        function removeActive(x) {
+            for (var i = 0; i < x.length; i++) {
+            x[i].classList.remove("autocomplete-active");
+            }
+        }
+        function closeAllLists(elmnt) {
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+            if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+            }
+            }
+        }
+        document.addEventListener("click", function (e) {
+            closeAllLists(e.target);
+        });
+        }
+        var artist_index = [
+            {% for artist in artists %}
+                "{{ artist }}",
+            {% endfor %}
+            ];
+        autocomplete(document.getElementById("myInput"), artist_index);
+    </script>
+
+    <!-- Buttons fade in -->
+    <script type="text/javascript">
+        function fadeIn() {
+            var artist = document.getElementById("myInput");
+            var div = document.getElementById("divArtist");
+            const myTimeout = setTimeout(update, 500);
+            if (artist.value != "") {
+                div.classList.add("FadeIn");
+            }
+            function update() {
+                artist.style.zIndex = "0";
+                document.getElementById("autocomplete").style.zIndex = "0";
+                div.getElementById("divArtist").style.zIndex = "1";
+            }
+        }
+    </script>
+
+    <!-- Clear artist search -->
+    <script type="text/javascript">
+        function clearInput() {
+            var artist = document.getElementById("myInput");
+            var div = document.getElementById("divArtist");
+            if (artist.value != "") {
+                artist.value = "";
+            }
+            div.classList.remove("FadeIn");
+            div.classList.add("FadeOut");
+            artist.style.zIndex = "1";
+            document.getElementById("autocomplete").style.zIndex = "1";
+            div.getElementById("divArtist").style.zIndex = "0";
+        }
+    </script>
+
+    <!-- Save artist -->
+    <script type="text/javascript">
+        function saveArtist() {
+            var artist = document.getElementById("myInput");
+            var div = document.getElementById("divArtist");
+            if (artist.value != "") {
+                artist.setAttribute('disabled', '');
+                div.classList.remove("FadeIn");
+                div.classList.add("FadeOut");
+            }
+            $.ajax({
+                url: '/artist',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ 'artist': artist.value }),
+                success: function(response) {
+                    var div2 = document.getElementById("divOpponent");
+                    div2.classList.add("FadeIn");
+                    document.getElementById('opponent').innerHTML = response.opponent;
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+
+    <!-- Clear opponent -->
+    <script type="text/javascript">
+        function clearOpponent() {
+            var artist = document.getElementById("myInput");
+            var opponent = document.getElementById("opponent");
+            var div = document.getElementById("divOpponent");
+            if (opponent.value != "") {
+                opponent.innerHTML = "?";
+            }
+            $.ajax({
+                url: '/artist',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ 'artist': artist.value }),
+                success: function(response) {
+                    opponent.innerHTML = response.opponent;
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+
+    <!-- Save opponent -->
+    <script type="text/javascript">
+        function saveOpponent() {
+            var artist = document.getElementById("myInput").value;
+            var opponent = document.getElementById("opponent").textContent;
+            sessionStorage.setItem("artist", artist);
+            sessionStorage.setItem("opponent", opponent);
+
+            var fade = document.getElementById("main");
+            var intervalID = setInterval(function () {
+                if (!fade.style.opacity) {
+                    fade.style.opacity = 1;
+                }
+                if (fade.style.opacity > 0) {
+                    fade.style.opacity -= 0.1;
+                }
+                else {
+                    clearInterval(intervalID);
+                }
+            }, 50);
+
+            const timeout = setTimeout(redirect, 300);
+            function redirect() {
+                window.location.href = "/fight";
+            }
+        }
+    </script>
+
+    <!-- Sound On/Off -->
+    <script type="text/javascript">
+        document.getElementById("speaker1").addEventListener("click", sound);
+        var bgaudio = document.getElementById("bgaudio");
+        var speakerBTN = document.getElementById("speaker1");
+        function sound() {
+            if (speakerBTN.innerHTML != "SOUND ON") {
+                bgaudio.pause();
+                speakerBTN.innerHTML = "SOUND ON";
+            }
+            else {
+                bgaudio.play();
+                speakerBTN.innerHTML = "SOUND OFF";
+            }
+        }
+    </script>
+
+    <!-- Back to mode page -->
+    <script type="text/javascript">
+        document.getElementById("back1").addEventListener("click", back);
+        function back() {
+            var clickaudio = document.getElementById("clickaudio");
+            clickaudio.volume = 0.2;
+            clickaudio.play();
+            var fade = document.getElementById("main");
+            var intervalID = setInterval(function () {
+                if (!fade.style.opacity) {
+                    fade.style.opacity = 1;
+                }
+                if (fade.style.opacity > 0) {
+                    fade.style.opacity -= 0.1;
+                }
+                else {
+                    clearInterval(intervalID);
+                }
+            }, 50);
+
+            const timeout = setTimeout(redirect, 300);
+            function redirect() {
+                window.location.href = "/mode";
+            }
+        }
+    </script>
+
+    <!-- Page fade in -->
+    <script type="text/javascript">
+        document.body.className = "hidden";
+        const timeout_in = setTimeout(fadein, 500);
+        function fadein() {
+            document.body.className = "visible";
+        }
+    </script>
+
+{% endblock %}
