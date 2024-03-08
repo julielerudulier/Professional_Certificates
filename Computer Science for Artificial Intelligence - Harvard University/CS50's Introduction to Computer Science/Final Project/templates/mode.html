@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    TITLE
+{% endblock %}
+
+{% block main %}
+
+    <div id="main">
+        <video id="background-video" autoplay loop poster="static/images/shakira.png">
+            <source src="none.mp4" type="video/mp4">
+        </video>
+        <audio id="clickaudio" src="static/sounds/click.mp3"></audio>
+        <div class="menu"></div>
+        <h4>Select Mode</h4>
+        <div class="left">
+            <p class="title">ArtISt</p>
+            <img src="/static/images/arena5.png" alt="arena" class="mode" id="press1" onclick="toartist()">
+        </div>
+        <div class="right">
+            <p class="title">rAndoM</p>
+            <img src="/static/images/arena2.png" alt="arena" class="mode" id="press2" onclick="torandom()">
+        </div>
+    </div>
+
+    <!-- Page fade in -->
+    <script type="text/javascript">
+        document.body.className = "hidden";
+        const timeout_in = setTimeout(fadein, 500);
+        function fadein() {
+            document.body.className = "visible";
+        }
+    </script>
+
+    <!-- Background videos-->
+    <script type="text/javascript">
+        const possibleVideos = ["static/videos/vid_drake.mp4", "static/videos/vid_shakira.mp4", "static/videos/vid_theweeknd.mp4", "static/videos/vid_carrie.mp4"];
+        const randomNum = Math.floor(Math.random() * (possibleVideos.length-1))
+        const randomVideo = possibleVideos[randomNum];
+        const myVid = document.getElementById('background-video');
+        myVid.src = randomVideo;
+        myVid.load();
+        myVid.play();
+    </script>
+
+    <!-- Redirect to artist page + fade out -->
+    <script type="text/javascript">
+        document.getElementById("press1").addEventListener("click", toartist);
+        function toartist() {
+            var fade = document.getElementById("main");
+            var clickaudio = document.getElementById("clickaudio");
+            clickaudio.volume = 0.2;
+            clickaudio.play();
+            clickaudio.playbackRate = 1.2;
+            var intervalID = setInterval(function () {
+                if (!fade.style.opacity) {
+                    fade.style.opacity = 1;
+                }
+                if (fade.style.opacity > 0) {
+                    fade.style.opacity -= 0.1;
+                }
+                else {
+                    clearInterval(intervalID);
+                }
+            }, 50);
+
+            const timeout = setTimeout(redirect, 300);
+            function redirect() {
+                window.location.href = "/artist";
+            }
+        }
+    </script>
+
+    <!-- Redirect to random page + fade out -->
+    <script type="text/javascript">
+        document.getElementById("press2").addEventListener("click", torandom);
+        function torandom() {
+            var fade = document.getElementById("main");
+            var clickaudio = document.getElementById("clickaudio");
+            clickaudio.volume = 0.2;
+            clickaudio.play();
+            clickaudio.playbackRate = 1.2;
+            var intervalID = setInterval(function () {
+                if (!fade.style.opacity) {
+                    fade.style.opacity = 1;
+                }
+                if (fade.style.opacity > 0) {
+                    fade.style.opacity -= 0.1;
+                }
+                else {
+                    clearInterval(intervalID);
+                }
+            }, 50);
+
+            const timeout = setTimeout(redirect, 300);
+            function redirect() {
+                window.location.href = "/random";
+            }
+        }
+    </script>
+
+{% endblock %}
