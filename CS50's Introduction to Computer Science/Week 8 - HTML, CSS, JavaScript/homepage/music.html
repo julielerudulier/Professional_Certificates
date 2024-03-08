@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>This is... Julie Le Rudulier!</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="styles.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div class="front">
+                    <img src="images/music.jpeg" alt="Homepage banner" style="width:100%; filter: brightness(40%);">
+                    <div class="banner-header-music">
+                        <h1 class="h1-special">
+                            "My songs are like my children:
+                            I expect them to support me when I'm old."</h1>
+                        <h2 class="h2title" style="text-align: right;">- Dolly Parton</h2>
+                        <div class="typewrite" data-period="2000" data-type='[ "Scroll down to listen to some of my tracks." ]'>
+                            <span class="wrap"></span>
+                        </div>
+                        <script>
+                            var TxtType = function(el, toRotate, period) {
+                                this.toRotate = toRotate;
+                                this.el = el;
+                                this.loopNum = 0;
+                                this.period = parseInt(period, 10) || 2000;
+                                this.txt = '';
+                                this.tick();
+                                this.isDeleting = false;
+                            };
+
+                            TxtType.prototype.tick = function() {
+                                var i = this.loopNum % this.toRotate.length;
+                                var fullTxt = this.toRotate[i];
+
+                                if (this.isDeleting) {
+                                    this.txt = fullTxt.substring(0, this.txt.length - 1);
+                                } else {
+                                    this.txt = fullTxt.substring(0, this.txt.length + 1);
+                                }
+
+                                this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+                                var that = this;
+                                var delta = 150 - Math.random() * 100;
+
+                                if (this.isDeleting) { delta /= 2; }
+
+                                if (!this.isDeleting && this.txt === fullTxt) {
+                                    delta = this.period;
+                                    this.isDeleting = true;
+                                } else if (this.isDeleting && this.txt === '') {
+                                    this.isDeleting = false;
+                                    this.loopNum++;
+                                    delta = 500;
+                                }
+
+                                setTimeout(function() {
+                                    that.tick();
+                                }, delta);
+                            };
+
+                            window.onload = function() {
+                                var elements = document.getElementsByClassName('typewrite');
+                                for (var i=0; i<elements.length; i++) {
+                                    var toRotate = elements[i].getAttribute('data-type');
+                                    var period = elements[i].getAttribute('data-period');
+                                    if (toRotate) {
+                                    new TxtType(elements[i], JSON.parse(toRotate), period);
+                                    }
+                                }
+
+                                var css = document.createElement("style");
+                                css.type = "text/css";
+                                css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+                                document.body.appendChild(css);
+                            };
+                        </script>
+                    </div>
+                </div>
+                <div class="container-nav">
+                    <div class="sticky" id="navbar">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Me</a>
+                        <a href="music.html">Music</a>
+                        <a href="travels.html">Travels</a>
+                    </div>
+                </div>
+                <script>
+                    window.onscroll = function() {myFunction()};
+                    var navbar = document.getElementById("navbar");
+                    var sticky = navbar.offsetTop;
+                    function myFunction() {
+                        if (window.pageYOffset >= sticky) {
+                            navbar.classList.add("sticky")
+                        }
+                        else {
+                            navbar.classList.remove("sticky");
+                        }
+                    }
+                </script>
+                <script>
+                    const checkpoint = 300;
+                    window.addEventListener("scroll", () => {
+                        const currentScroll = window.pageYOffset;
+                        if (currentScroll <= checkpoint) {
+                            opacity = 1 - currentScroll / checkpoint;
+                        } else {
+                            opacity = 0;
+                        }
+                        document.querySelector(".front").style.opacity = opacity;
+                    });
+                </script>
+            </nav>
+        </header>
+        <main class="content">
+            <div class="content-music">
+                <div class="left" style="width: 50%; float:left;">
+                    <div class="typedtext" id="typedtext">
+                        <script>
+                            var aText = new Array(
+                                "My first love has always been music (and soccer).",
+                                "(and food).",
+                                "",
+                                "I've been playing music since I was a child, and I spent many years studying music theory in Music School.",
+                                "",
+                                "I started producing music when I was in high school, and today I still produce tracks for artists in various genres.",
+                                "",
+                                "The playlist on the right is a short collection of tracks I produced for myself.",
+                                "",
+                                "Check them out and let me know what you think!",
+                                );
+                            var iSpeed = 80;
+                            var iIndex = 0;
+                            var iArrLength = aText[0].length;
+                            var iScrollAt = 20;
+                            var iTextPos = 0;
+                            var sContents = '';
+                            var iRow;
+
+                            function typewriter(){
+                                sContents =  ' ';
+                                iRow = Math.max(0, iIndex-iScrollAt);
+                                var destination = document.getElementById("typedtext");
+                                while ( iRow < iIndex ) {
+                                    sContents += aText[iRow++] + '<br />';
+                                }
+                                destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
+                                if ( iTextPos++ == iArrLength ) {
+                                    iTextPos = 0;
+                                    iIndex++;
+                                    if ( iIndex != aText.length ) {
+                                        iArrLength = aText[iIndex].length;
+                                        setTimeout("typewriter()", 500);
+                                    }
+                                } else {
+                                    setTimeout("typewriter()", iSpeed);
+                                }
+                            }
+                        typewriter();
+                        </script>
+                    </div>
+                </div>
+                <div class="center" style="width:50%; float:left;">
+                    <iframe class="iframe" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1614740542&color=%23acb4ac&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true"></iframe><div style="font-size: 10px; color: #ffffff;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"> · <a href="https://soundcloud.com/djfunkee/sets/live-from-the-city-where-the-heathens-go" title="Demo tracks" target="_blank" style="color: #ffffff; text-decoration: none;"></a></div>
+                </div>
+            </div>
+        </main>
+        <div class="footer">
+            <p class="footer-text">Copyright © 2023 Julie Le Rudulier. All Rights Reserved.</p>
+        </div>
+        <script>
+            const checkpoint2 = 300;
+            window.addEventListener("scroll", () => {
+                const currentScroll = window.pageYOffset;
+                if (window.screen.width > 600) {
+                    if (currentScroll <= checkpoint2) {
+                        opacity = 0 + currentScroll / checkpoint2;
+                    } else {
+                        opacity = 1;
+                    }
+                }
+                else {
+                    opacity = 1;
+                }
+                document.querySelector(".footer").style.opacity = opacity;
+            });
+        </script>
+    </body>
+</html>
