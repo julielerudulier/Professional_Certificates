@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <h4>Your Portfolio</h4>
+    <div>
+        <table id="portfolio">
+            <thead>
+                <tr>
+                    <th>Stock Symbol</th>
+                    <th>Shares</th>
+                    <th>Current Share Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for stock in stocks %}
+                {% if stock["shares"] > 0 %}
+                    <tr>
+                        <td>{{ stock["symbol"] }}</td>
+                        <td>{{ stock["shares"] }}</td>
+                        <td>{{ stock["price"] | usd }}</td>
+                        <td>{{ (stock["price"] * stock["shares"]) | usd }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <div style="text-align: left; padding-left:20%; padding-top: 40px;">
+            <p style="font-weight: bold;">Current Cash Balance: {{ balance | usd }}</p>
+            <p style="font-weight: bold;">Total Value of Account: {{ (balance + stock_value) | usd }}</p>
+        </div>
+{% endblock %}

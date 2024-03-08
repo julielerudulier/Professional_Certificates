@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <h4>View Stock Quote</h4>
+    <form action="/quote" method="post">
+        <table class="mb-3">
+            <tr>
+                <td><input autocomplete="on" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Stock Symbol" type="text"></td>
+                <td><button class="btn btn-primary" type="submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}
