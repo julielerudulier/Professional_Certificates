@@ -1,4 +1,4 @@
-### CS50 Final Project: 
+### CS50 Final Project
 The climax of CS50 is its final project. The final project is an opportunity for students to take their newfound savvy with programming out for a spin and develop their very own piece of software. So long as the project draws upon this course’s lessons, the nature of the project is entirely up to the student(s).  Students may implement their project in any language(s).
 More information on the requirements can be found [here](https://cs50.harvard.edu/x/2023/project/).
 
