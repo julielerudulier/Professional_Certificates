@@ -1,0 +1,410 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    TITLE
+{% endblock %}
+
+{% block main %}
+
+    <div id="main">
+        <video id="background-video" autoplay loop muted poster="static/images/arena4.png" style="opacity: 50%;">
+            <source src="static/videos/vid_fight.mp4" type="video/mp4">
+        </video>
+        <audio id="countdownaudio" src="static/sounds/countdown.mp3"></audio>
+        <audio id="bgaudio" src="static/sounds/intro.mp3"></audio>
+        <div class="left_fight" style="margin-top: -1%;" style="z-index: -1;" id="fight">
+            <p class="score" id="Ascore" style="margin-left: -47%;">0</p>
+            <textarea id="fighter1" style="margin-left: 12%; width: 100%; padding: 0; text-align: left;
+            font-size: x-large; letter-spacing: -2px; word-spacing: 0px;" rows="4"></textarea>
+            <p class="tracks" id="Atrack" style="color: #f76b00; font-size: large; margin-top: -9%; opacity: 0%;"></p>
+            <iframe style="margin-left: -2%;" allow="autoplay; clipboard-write; encrypted-media;" src="" id="Aframe" class="iframe"></iframe>
+            <div id="margin-3" style="margin-top: -3%; position: relative; z-index: 1;">
+                <input value="VOTE" id="voteArtist" class="edit_btn" type="button" style="width: 22%; opacity: 0;">
+            </div>
+        </div>
+        <div class="container" id="container" style="z-index: 0; margin-top: 53%;"></div>
+        <div id="wrapper" style="z-index: 1; margin: -135% 0 0 1%;">
+            <p id="explain" style="padding-top: 15.5%;">
+                Vote for the tracks you like the most and fight for your favorite artist!</p>
+            <input type="button" value="click here to start" id="ready" style="z-index: 1;" onclick="readyOut">
+        </div>
+        <div class="end" id="end" style="z-index: -1;">
+            <p id="winner" style="z-index: 1; margin: 15% 0 6% 5%;"></p>
+            <div id="end_btns" style="opacity: 0%; position: relative; z-index: 1; margin-top: 1.5%;">
+                <input value="MAIN MENU" id="back1" type="button" class="end_btns" style="width: 15%;">
+                <input value="START A NEW BATTLE" id="newFight" type="button" class="end_btns" style="width: 15%;">
+                <input value="VIEW BATTLE PLAYLIST" id="export" type="button" class="end_btns" style="width: 15%;">
+            </div>
+        </div>
+        <div class="right_fight" style="margin: -53.3% 0 0 50.5%;" style="z-index: -1;" id="fight">
+            <p class="score" id="Oscore" style="padding-right: 10%;">0</p>
+            <textarea id="fighter2" style="width: 100%; position: relative; z-index: -2; padding-top: 0px; padding-right: 16%;
+            text-align: right; font-size: x-large; letter-spacing: -2px; word-spacing: 0px;" rows="4"></textarea>
+            <p class="tracks" id="Otrack" style="color: DarkCyan; font-size: large; margin-top: -9.1%; opacity: 0%;"></p>
+            <iframe allow="autoplay; clipboard-write; encrypted-media;" src="" id="Oframe" class="iframe"></iframe>
+            <div id="margin-3" style="margin: -3% 0 -1% 0; position: relative; z-index: 1;">
+                <input value="VOTE" id="voteOpponent" type="button" class="save_btn" style="width: 22%; opacity: 0;">
+            </div>
+        </div>
+        <div id="playlist" style="z-index: -1; padding: 0; margin: -17% 0 0 10%;">
+            <table id="playlistContent" class="playlistContent">
+                <tr>
+                    <td id="artistPlaylist" style="font-weight: bold; width: 20%;"></td>
+                    <td id="Atrack1"></td>
+                    <td><a href="" id="urlA1" target="blank" style="text-decoration: underline; color: white; cursor: pointer;">Listen Online</a></td>
+                </tr>
+                <tr>
+                    <td id="artistPlaylist"></td>
+                    <td id="Atrack2"></td>
+                    <td><a href="" id="urlA2" target="blank" style="text-decoration: underline; color: white; cursor: pointer;">Listen Online</a></td>
+                </tr>
+                <tr>
+                    <td id="artistPlaylist"></td>
+                    <td id="Atrack3"></td>
+                    <td><a href="" id="urlA3" target="blank" style="text-decoration: underline; color: white; cursor: pointer;">Listen Online</a></td>
+                </tr>
+                <tr>
+                    <td id="artistPlaylist"></td>
+                    <td id="Atrack4"></td>
+                    <td><a href="" id="urlA4" target="blank" style="text-decoration: underline; color: white; cursor: pointer;">Listen Online</a></td>
+                </tr>
+                <tr>
+                    <td id="artistPlaylist"></td>
+                    <td id="Atrack5"></td>
+                    <td><a href="" id="urlA5" target="blank" style="text-decoration: underline; color: white; cursor: pointer;">Listen Online</a></td>
+                </tr>
+                <tr>
+                    <td id="opponentPlaylist" style="font-weight: bold; width: 20%";></td>
+                    <td id="Otrack1"></td>
+                    <td><a href="" id="urlO1" target="blank" style="text-decoration: underline; color: white; cursor: pointer;">Listen Online</a></td>
+                </tr>
+                <tr>
+                    <td id="opponentPlaylist"></td>
+                    <td id="Otrack2"></td>
+                    <td><a href="" id="urlO2" target="blank" style="text-decoration: underline; color: white; cursor: pointer;">Listen Online</a></td>
+                </tr>
+                <tr>
+                    <td id="opponentPlaylist"></td>
+                    <td id="Otrack3"></td>
+                    <td><a href="" id="urlO3" target="blank" style="text-decoration: underline; color: white; cursor: pointer;">Listen Online</a></td>
+                </tr>
+                <tr>
+                    <td id="opponentPlaylist"></td>
+                    <td id="Otrack4"></td>
+                    <td><a href="" id="urlO4" target="blank" style="text-decoration: underline; color: white; cursor: pointer;">Listen Online</a></td>
+                </tr>
+                <tr>
+                    <td id="opponentPlaylist"></td>
+                    <td id="Otrack5"></td>
+                    <td><a href="" id="urlO5" target="blank" style="text-decoration: underline; color: white; cursor: pointer;">Listen Online</a></td>
+                </tr>
+            </table>
+            <div id="back2" style="z-index: -2;">
+                <p class="back_noanim" id="back2noanim" style="z-index: -2; margin: 3% 0 0 36.5%;">GO BACK</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page fade in -->
+    <script type="text/javascript">
+        document.body.className = "hidden";
+        const timeout_in = setTimeout(fadein, 500);
+        function fadein() {
+            document.body.className = "visible";
+        }
+    </script>
+
+    <!-- Infos artists -->
+    <script type="text/javascript">
+        window.onload = (event) => {
+            var artist = sessionStorage.getItem("artist");
+            console.log(artist);
+            var opponent = sessionStorage.getItem("opponent");
+            console.log(opponent);
+            const timeout = setTimeout(appear, 500);
+            function appear() {
+                document.getElementById("fighter1").classList.add("FadeIn");
+                document.getElementById("fighter2").classList.add("FadeIn");
+                document.getElementById("fighter1").innerText = artist;
+                document.getElementById("fighter2").innerText = opponent;
+            }
+        };
+    </script>
+
+    <!-- Ready fade out -->
+    <script type="text/javascript">
+        document.getElementById("ready").addEventListener("click", readyOut);
+        var bgaudio = document.getElementById("bgaudio");
+        var countdownaudio = document.getElementById("countdownaudio");
+        function readyOut() {
+            document.getElementById("wrapper").classList.add("FadeOut");
+            document.getElementById("ready").style.zIndex = "-2";
+            document.getElementById("wrapper").style.zIndex = "-2";
+            document.getElementById("fight").style.zIndex = "2";
+            bgaudio.volume = 0.5;
+            bgaudio.play();
+            const timeout = setTimeout(soundOn, 1000);
+            function soundOn() {
+                countdownaudio.volume = 0.5;
+                countdownaudio.play();
+            }
+        }
+    </script>
+
+    <!-- Countdown -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            document.getElementById("ready").addEventListener("click", countdown);
+            function countdown() {
+                var counter = 3;
+                var timer = setInterval( function() {
+                $('#countdown').remove();
+                var countdown = $('<span id="countdown">'+(counter==0?'Fight!':counter)+'</span>');
+                countdown.appendTo($('.container'));
+                setTimeout( () => {
+                    if (counter >-1) {
+                    $('#countdown').css({ 'font-size': '10vw', 'opacity': 50 });
+                    } else {
+                    $('#countdown').css({ 'font-size': '10vw', 'opacity': 100 });
+                    }
+                },20);
+                counter--;
+                if (counter == -1) clearInterval(timer);
+                }, 1000);
+                var fade = document.getElementById("countdown");
+                var intervalID = setInterval(function () {
+                    if (!fade.style.opacity) {
+                        fade.style.opacity = 1;
+                    }
+                    if (fade.style.opacity > 0) {
+                        fade.style.opacity -= 0.1;
+                    }
+                    else {
+                        clearInterval(intervalID);
+                    }
+                }, 50);
+            }
+        });
+    </script>
+
+    <!-- z-Index -->
+    <script type="text/javascript">
+        var tracks = document.getElementById("tracks");
+        tracks.addEventListener("change", zIndex);
+        function zIndex() {
+            if (tracks != "") {
+                document.getElementById("container").style.zIndex = "-2";
+                document.getElementById("wrapper").style.zIndex = "-2";
+                document.getElementById("ready").style.zIndex = "-2";
+                document.getElementById("fight").style.zIndex = "2";
+                document.getElementById("margin-3").style.zIndex = "2";
+            }
+        };
+    </script>
+
+    <!-- Get tracks + Game -->
+    <script type="text/javascript">
+        document.getElementById("ready").addEventListener("click", getTracks);
+        function getTracks() {
+            var artist = document.getElementById("fighter1");
+            var opponent = document.getElementById("fighter2");
+            $.ajax({
+                url: '/fight',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ 'artist': artist.value, 'opponent': opponent.value }),
+                success: function(response) {
+                    document.getElementById("Atrack").classList.add("FadeInDelayed");
+                    document.getElementById("Atrack").innerHTML = response.Atrack1;
+                    document.getElementById("Aframe").classList.add("FadeInDelayed");
+                    document.getElementById("Aframe").src = response.linkA1;
+                    document.getElementById("Otrack").classList.add("FadeInDelayed");
+                    document.getElementById("Otrack").innerHTML = response.Otrack1;
+                    document.getElementById("Oframe").classList.add("FadeInDelayed");
+                    document.getElementById("Oframe").src = response.linkO1;
+                    document.getElementById("voteArtist").classList.add("FadeInDelayed");
+                    document.getElementById("voteOpponent").classList.add("FadeInDelayed");
+                    document.getElementById("artistPlaylist").innerHTML = artist.value;
+                    document.getElementById("opponentPlaylist").innerHTML = opponent.value;
+                    document.getElementById("Atrack1").innerHTML = response.Atrack1;
+                    document.getElementById("Atrack2").innerHTML = response.Atrack2;
+                    document.getElementById("Atrack3").innerHTML = response.Atrack3;
+                    document.getElementById("Atrack4").innerHTML = response.Atrack4;
+                    document.getElementById("Atrack5").innerHTML = response.Atrack5;
+                    document.getElementById("Otrack1").innerHTML = response.Otrack1;
+                    document.getElementById("Otrack2").innerHTML = response.Otrack2;
+                    document.getElementById("Otrack3").innerHTML = response.Otrack3;
+                    document.getElementById("Otrack4").innerHTML = response.Otrack4;
+                    document.getElementById("Otrack5").innerHTML = response.Otrack5;
+                    document.getElementById("urlA1").href = response.urlA1;
+                    document.getElementById("urlA2").href = response.urlA2;
+                    document.getElementById("urlA3").href = response.urlA3;
+                    document.getElementById("urlA4").href = response.urlA4;
+                    document.getElementById("urlA5").href = response.urlA5;
+                    document.getElementById("urlO1").href = response.urlO1;
+                    document.getElementById("urlO2").href = response.urlO2;
+                    document.getElementById("urlO3").href = response.urlO3;
+                    document.getElementById("urlO4").href = response.urlO4;
+                    document.getElementById("urlO5").href = response.urlO5;
+
+                    var Aclicks = 0;
+                    document.getElementById("voteArtist").addEventListener("click", changeTracksA);
+
+                    var Oclicks = 0;
+                    document.getElementById("voteOpponent").addEventListener("click", changeTracksO);
+
+                    function changeTracksA() {
+                        console.log(++Aclicks);
+                        var artist = document.getElementById("fighter1");
+                        if (Aclicks == 1) {
+                            document.getElementById("Atrack").innerHTML = response.Atrack2;
+                            document.getElementById("Aframe").src = response.linkA2;
+                            document.getElementById("Otrack").innerHTML = response.Otrack2;
+                            document.getElementById("Oframe").src = response.linkO2;
+                            document.getElementById("Ascore").innerHTML = Aclicks;
+                        }
+                        if (Aclicks == 2) {
+                            document.getElementById("Atrack").innerHTML = response.Atrack3;
+                            document.getElementById("Aframe").src = response.linkA3;
+                            document.getElementById("Otrack").innerHTML = response.Otrack3;
+                            document.getElementById("Oframe").src = response.linkO3;
+                            document.getElementById("Ascore").innerHTML = Aclicks;
+                        }
+                        if (Aclicks == 3) {
+                            document.getElementById("Ascore").innerHTML = Aclicks;
+                            document.getElementById("Atrack").classList.remove("FadeInDelayed");
+                            document.getElementById("Aframe").classList.remove("FadeInDelayed");
+                            document.getElementById("voteArtist").classList.remove("FadeInDelayed");
+                            document.getElementById("Atrack").classList.add("FadeOut");
+                            document.getElementById("Aframe").classList.add("FadeOut");
+                            document.getElementById("voteArtist").classList.add("FadeOut");
+                            document.getElementById("Otrack").classList.remove("FadeInDelayed");
+                            document.getElementById("Oframe").classList.remove("FadeInDelayed");
+                            document.getElementById("voteOpponent").classList.remove("FadeInDelayed");
+                            document.getElementById("Otrack").classList.add("FadeOut");
+                            document.getElementById("Oframe").classList.add("FadeOut");
+                            document.getElementById("voteOpponent").classList.add("FadeOut");
+                            document.getElementById("end").classList.add("FadeIn");
+                            document.getElementById("end_btns").classList.add("FadeIn");
+                            document.getElementById("winner").innerHTML = artist.textContent + " WINS!";
+                            document.getElementById("end").style.zIndex = "99";
+                            document.getElementById("fight").style.zIndex = "-1";
+                        }
+                    }
+
+                    var Oclicks = 0;
+                    document.getElementById("voteOpponent").addEventListener("click", changeTracksO);
+
+                    function changeTracksO() {
+                        console.log(++Oclicks);
+                        if (Oclicks == 1) {
+                            document.getElementById("Atrack").innerHTML = response.Atrack4;
+                            document.getElementById("Aframe").src = response.linkA4;
+                            document.getElementById("Otrack").innerHTML = response.Otrack4;
+                            document.getElementById("Oframe").src = response.linkO4;
+                            document.getElementById("Oscore").innerHTML = Oclicks;
+                        }
+                        if (Oclicks == 2) {
+                            document.getElementById("Atrack").innerHTML = response.Atrack5;
+                            document.getElementById("Aframe").src = response.linkA5;
+                            document.getElementById("Otrack").innerHTML = response.Otrack5;
+                            document.getElementById("Oframe").src = response.linkO5;
+                            document.getElementById("Oscore").innerHTML = Oclicks;
+                        }
+                        if (Oclicks == 3) {
+                            document.getElementById("Oscore").innerHTML = Oclicks;
+                            document.getElementById("Atrack").classList.remove("FadeInDelayed");
+                            document.getElementById("Aframe").classList.remove("FadeInDelayed");
+                            document.getElementById("voteArtist").classList.remove("FadeInDelayed");
+                            document.getElementById("Atrack").classList.add("FadeOut");
+                            document.getElementById("Aframe").classList.add("FadeOut");
+                            document.getElementById("voteArtist").classList.add("FadeOut");
+                            document.getElementById("Otrack").classList.remove("FadeInDelayed");
+                            document.getElementById("Oframe").classList.remove("FadeInDelayed");
+                            document.getElementById("voteOpponent").classList.remove("FadeInDelayed");
+                            document.getElementById("Otrack").classList.add("FadeOut");
+                            document.getElementById("Oframe").classList.add("FadeOut");
+                            document.getElementById("voteOpponent").classList.add("FadeOut");
+                            document.getElementById("end").classList.add("FadeIn");
+                            document.getElementById("end_btns").classList.add("FadeIn");
+                            document.getElementById("winner").innerHTML = opponent.textContent + " WINS!";
+                            document.getElementById("end").style.zIndex = "99";
+                            document.getElementById("fight").style.zIndex = "-1";
+                        }
+                    }
+                    document.getElementById("export").addEventListener("click", showPlaylist);
+                    function showPlaylist()
+                    {
+                        var playlist = document.getElementById("playlist");
+                        document.getElementById("end").classList.remove("FadeIn");
+                        document.getElementById("end_btns").classList.remove("FadeIn");
+                        document.getElementById("winner").classList.add("FadeOut");
+                        document.getElementById("end").classList.add("FadeOut");
+                        document.getElementById("end_btns").classList.add("FadeOut");
+                        document.getElementById("end").style.zIndex = "-1";
+                        document.getElementById("end_btns").style.zIndex = "-1";
+                        document.getElementById("playlist").classList.add("FadeIn");
+                        document.getElementById("playlist").style.zIndex = "100";
+                        document.getElementById("playlistContent").style.zIndex = "101";
+                        document.getElementById("back2").classList.add("blink");
+                        document.getElementById("back2").style.zIndex = "102";
+                        document.getElementById("back2noanim").style.zIndex = "102";
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+
+    <!-- Page fade out to Mode-->
+    <script type="text/javascript">
+        document.getElementById("back1").addEventListener("click", fadeMode);
+        document.getElementById("back2").addEventListener("click", fadeMode);
+        function fadeMode() {
+            var fade = document.getElementById("main");
+            var intervalID = setInterval(function () {
+                if (!fade.style.opacity) {
+                    fade.style.opacity = 1;
+                }
+                if (fade.style.opacity > 0) {
+                    fade.style.opacity -= 0.1;
+                }
+                else {
+                    clearInterval(intervalID);
+                }
+            }, 50);
+
+            const timeout = setTimeout(redirect, 300);
+            function redirect() {
+                window.location.href = "/mode";
+            }
+        }
+    </script>
+
+    <!-- Page fade out to Artist -->
+    <script type="text/javascript">
+        document.getElementById("newFight").addEventListener("click", fadeArtist);
+        function fadeArtist() {
+            var fade = document.getElementById("main");
+            var intervalID = setInterval(function () {
+                if (!fade.style.opacity) {
+                    fade.style.opacity = 1;
+                }
+                if (fade.style.opacity > 0) {
+                    fade.style.opacity -= 0.1;
+                }
+                else {
+                    clearInterval(intervalID);
+                }
+            }, 50);
+
+            const timeout = setTimeout(redirect, 300);
+            function redirect() {
+                window.location.href = "/artist";
+            }
+        }
+    </script>
+
+{% endblock %}
