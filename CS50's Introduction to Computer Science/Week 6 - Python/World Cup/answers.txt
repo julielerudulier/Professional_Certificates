@@ -1,0 +1,18 @@
+Times:
+
+10 simulations: 0m0.024s
+100 simulations: 0m0.024s
+1000 simulations: 0m0.023s
+10000 simulations: 0m0.029s
+100000 simulations: 0m0.087s
+1000000 simulations: 0m0.648s
+
+Questions:
+
+Which predictions, if any, proved incorrect as you increased the number of simulations?:
+With only 10 simulations, a team such as Italy went from having a 20% chance of winning the title to 2.5% chance of winning when running 10 000+ simulations.
+To some extent, the same trend can be observed with France and Australia. The chance of winning for both countries dropped by more than 2 as the number of simulations increased.
+
+Suppose you're charged a fee for each second of compute time your program uses.
+After how many simulations would you call the predictions "good enough"?:
+Knowing that the US actually won the tournament, I would stop once the US appears in the top 3 potential winning countries - so 10 000 simulations.
