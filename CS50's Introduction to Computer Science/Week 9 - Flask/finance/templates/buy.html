@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <h4>Buy Stock</h4>
+    <form action="/buy" method="post">
+        <table class="mb-3">
+            <tr>
+                <td><input required autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Stock Symbol" type="text">
+                </td>
+                <td><input type="text" required autofocus class="form-control mx-auto w-auto" name="shares" placeholder="Number of Shares"></td>
+                <td><button class="btn btn-primary" type="submit">Buy</button></td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}
