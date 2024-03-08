@@ -1,4 +1,4 @@
-### In Week 7, the class discusses SQL and how to program efficiently in a more general manner . 
+### In week 7, the class discusses SQL and how to program efficiently in a more general manner . 
 
 Week 7's assignments include:
 * [Lab 7: Songs](https://cs50.harvard.edu/x/2023/labs/7/)
