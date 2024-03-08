@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <h4>Transaction History</h4>
+    <div>
+        <table id="portfolio">
+            <thead>
+                <tr>
+                    <th>Stock Symbol</th>
+                    <th>Date And Time</th>
+                    <th>Action</th>
+                    <th>Quantity</th>
+                    <th>Share Value</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for row in rows %}
+                <tr>
+                    <td>{{ row["symbol"] }}</td>
+                    <td>{{ row["timestamp"] }}</td>
+                    <td>{{ row["action"] }}</td>
+                    <td>{{ row["shares"] }}</td>
+                    <td>{{ row["quote"] | usd }}</td>
+                    <td>{{ row["total"] | usd }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}
