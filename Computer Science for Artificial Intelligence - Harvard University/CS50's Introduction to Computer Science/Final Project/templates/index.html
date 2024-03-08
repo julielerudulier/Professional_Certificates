@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    TITLE
+{% endblock %}
+
+{% block main %}
+
+    <div id="main">
+        <video id="background-video" autoplay loop muted poster="static/images/arena3.png">
+            <source src="static/videos/vid_home.mp4" type="video/mp4">
+        </video>
+        <audio id="bgaudio" src="static/sounds/index.mp3"></audio>
+        <audio id="clickaudio" src="static/sounds/click.mp3"></audio>
+        <div>
+            <h2 class="typing">CS50</h2>
+            <h1>MUSIC BATTLES</h1>
+        </div>
+        <div>
+            <button type="submit" id="press" onclick="fadeout()">CLICK HERE TO START</button>
+        </div>
+    </div>
+
+    <!-- Page fade in -->
+    <script type="text/javascript">
+        document.body.className = "hidden";
+        const timeout_in = setTimeout(fadein, 500);
+        function fadein() {
+            document.body.className = "visible";
+        }
+    </script>
+
+    <!-- Page fade out -->
+    <script type="text/javascript">
+        document.getElementById("press").addEventListener("click", fadeout);
+        function fadeout() {
+            var fade = document.getElementById("main");
+            var clickaudio = document.getElementById("clickaudio");
+            clickaudio.volume = 0.2;
+            clickaudio.play();
+            clickaudio.playbackRate = 1.2;
+            var intervalID = setInterval(function () {
+                if (!fade.style.opacity) {
+                    fade.style.opacity = 1;
+                }
+                if (fade.style.opacity > 0) {
+                    fade.style.opacity -= 0.1;
+                }
+                else {
+                    clearInterval(intervalID);
+                }
+            }, 50);
+
+            const timeout = setTimeout(redirect, 300);
+            function redirect() {
+                window.location.href = "/mode";
+            }
+        }
+    </script>
+
+{% endblock %}
