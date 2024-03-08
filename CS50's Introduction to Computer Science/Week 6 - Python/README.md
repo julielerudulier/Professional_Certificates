@@ -1,4 +1,4 @@
-### Week 6 gets students to work with a higher-level programming language: Python. 
+### In week 6, students get to work with a higher-level programming language: Python. 
 
 Week 6's assignments include:
 * [Lab 6: World Cup](https://cs50.harvard.edu/x/2023/labs/6/)
