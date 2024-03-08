@@ -4,7 +4,4 @@ Week 2's assignments include:
 * [Lab 2: Scrabble](https://cs50.harvard.edu/x/2023/labs/2/)
 
 * [Problem Set 2](https://cs50.harvard.edu/x/2023/psets/2/):
-  - [Readability](https://cs50.harvard.edu/x/2023/psets/2/readability/)
-  - [Ceasar](https://cs50.harvard.edu/x/2023/psets/2/caesar/)
-  - [Wordle50](https://cs50.harvard.edu/x/2023/psets/2/wordle50/)
   - [Substitution](https://cs50.harvard.edu/x/2023/psets/2/substitution/)
