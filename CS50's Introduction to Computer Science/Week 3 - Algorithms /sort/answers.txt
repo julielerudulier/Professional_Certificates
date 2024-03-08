@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: Sort1 has the lowest time values when sorting two of the sorted files. As bubble sort is an algorithm that has the lowest lower bound (Omega (n)), we can conclude that sort1 is a bubble sort algorithm.
+
+sort2 uses: merge sort
+
+How do you know?: Sort2 has the lowest time values for almost each sorting. As merge sort is an algorithm that has the lowest upper bound (O(n log n)), it has better performances than bubble and selection sorts. We can thus conclude that sort2 is a merge sort algorithm.
+
+sort3 uses: selection sort
+
+How do you know?: By deduction, we can suppose that sort3 is a selection sort algorithm.
