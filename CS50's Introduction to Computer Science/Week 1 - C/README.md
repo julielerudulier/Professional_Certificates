@@ -1,4 +1,5 @@
-### Week 1 provides an introduction to programming in C
+### Week 1 - C
+#### Week 1 provides an introduction to programming in C and how to write good code.
 
 
 Week 1's assignments include:
