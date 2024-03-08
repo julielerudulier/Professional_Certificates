@@ -1,4 +1,6 @@
-### Week 0 is a lesson about Scratch, a visual programming language developped by the MIT.
+### Week 0 - Scratch
+#### In week 0, students learn about Scratch, a visual programming language developped by the MIT.
+
 
 Week 0's assingment is the implementation of a Scratch project using Chrome.
 Specifications for this project can be found [here](https://cs50.harvard.edu/x/2023/psets/0/scratch/).
