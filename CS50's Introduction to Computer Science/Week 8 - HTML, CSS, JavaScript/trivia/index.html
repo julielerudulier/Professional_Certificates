@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <div class="quiz">
+                    <h3>What Is The Current Percentage Of Female Data Scientists In The US?</h3>
+                    <p id="quiz_answer"></p>
+                        <table>
+                            <tr>
+                                <td><label for="1">
+                                    <button class="choices" id="1" value="5.0%"/>
+                                    <span>5.0%</span>
+                                    <span id='result-1'></span>
+                                </label></td>
+                            <td>
+                                <label for="2">
+                                    <button class="choices" id="2" value="11.2%"/>
+                                    <span>11.2%</span>
+                                    <span id='result-2'></span>
+                                </label>
+                            </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                <label for="3">
+                                    <button class="choices" id="3" value="20.4%"/>
+                                    <span>20.4%</span>
+                                    <span id='result-3'></span>
+                                </label>
+                                </td>
+                                <td>
+                                <label for="4">
+                                    <button class="choices" id="4" value="36.6%"/>
+                                    <span>36.6%</span>
+                                    <span id='result-4'></span>
+                                </label>
+                                </td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <script>
+                const btn1 = document.getElementById('1');
+                btn1.addEventListener('click', function onClick() {
+                    btn1.style.backgroundColor = 'red';
+                    btn1.style.color = 'white';
+                    quiz_answer.innerHTML = "Incorrect";
+                    event.preventDefault();
+                });
+                const btn2 = document.getElementById('2');
+                btn2.addEventListener('click', function onClick() {
+                    btn2.style.backgroundColor = 'red';
+                    btn2.style.color = 'white';
+                    quiz_answer.innerHTML = "Incorrect";
+                    event.preventDefault();
+                });
+                const btn3 = document.getElementById('3');
+                btn3.addEventListener('click', function onClick() {
+                    btn3.style.backgroundColor = 'green';
+                    btn3.style.color = 'white';
+                    quiz_answer.innerHTML = "Correct!";
+                    event.preventDefault();
+                });
+                const btn4 = document.getElementById('4');
+                btn4.addEventListener('click', function onClick() {
+                    btn4.style.backgroundColor = 'red';
+                    btn4.style.color = 'white';
+                    quiz_answer.innerHTML = "Incorrect";
+                    event.preventDefault();
+                });
+            </script>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>What Is A Male Duck Called?</h3>
+                <p id="duck_answer"></p>
+                <form name="freetext">
+                    <input type='text' name='answer' id='textfield' autocomplete="off" autofocus placeholder="A male duck is called a...">
+                    <br>
+                    <button type="submit" id="btn">Enter</button>
+                </form>
+                <script>
+                    const btn = document.getElementById('btn');
+                    let duck_answer = document.getElementById('duck_answer');
+                    btn.addEventListener('click', function() {
+                        if (document.getElementById('textfield').value.toLowerCase() == "drake") {
+                            btn.style.backgroundColor = 'green';
+                            btn.style.color = 'white';
+                            duck_answer.innerHTML = "Correct!";
+                            event.preventDefault();
+                        }
+                        else {
+                            btn.style.backgroundColor = 'red';
+                            btn.style.color = 'white';
+                            duck_answer.innerHTML = "Incorrect";
+                            event.preventDefault();
+                        }
+                    });
+                </script>
+            </div>
+            <div class="section">
+                <h2>Part 3: Bonus Question</h2>
+                <hr>
+                <h3>What Is The Current Estimated Total Populations of Ducks?</h3>
+                <p id="bonus_answer"></p>
+                <ul class="bonus_choices">
+                    <li>
+                        <input type="radio" name="radiob1" id="bonus1" value="7.5m"/>
+                        <span id="span1">7.5 million</span>
+                    </li>
+                    <li>
+                        <input type="radio" name="radiob2" id="bonus2" value="34.2m"/>
+                        <span id="span2">34.2 million</span>
+                    </li>
+                    <li>
+                        <input type="radio" name="radiob3" id="bonus3" value="200m"/>
+                        <span id="span3">200.8 million</span>
+                    </li>
+                    <li>
+                        <input type="radio" name="radiob4" id="bonus4" value="913m"/>
+                        <span id="span4">913.0 million</span>
+                    </li>
+                </ul>
+                <button type="submit" id="bonus_btn">Enter</button>
+                <script>
+                    const bns_btn = document.getElementById('bonus_btn');
+                    let bns_answer = document.getElementById('bonus_answer');
+                    let radioButton1 = document.querySelector('input[name="radiob1"]');
+                    let radioButton2 = document.querySelector('input[name="radiob2"]');
+                    let radioButton3 = document.querySelector('input[name="radiob3"]');
+                    let radioButton4 = document.querySelector('input[name="radiob4"]');
+                    bns_btn.addEventListener('click', function() {
+                        if (radioButton1.checked) {
+                            bonus_answer.innerHTML = "Incorrect";
+                            document.getElementById('span1').style.color = "red";
+                            event.preventDefault();
+                        }
+                        else if (radioButton2.checked) {
+                            bonus_answer.innerHTML = "Correct!";
+                            document.getElementById('span2').style.color = "green";
+                            event.preventDefault();
+                        }
+                        else if (radioButton3.checked) {
+                            bonus_answer.innerHTML = "Incorrect";
+                            document.getElementById('span3').style.color = "red";
+                            event.preventDefault();
+                        }
+                        else if (radioButton4.checked) {
+                            bonus_answer.innerHTML = "Incorrect";
+                            document.getElementById('span4').style.color = "red";
+                            event.preventDefault();
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </body>
+</html>
