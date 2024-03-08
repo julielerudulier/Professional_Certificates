@@ -1,0 +1,316 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    TITLE
+{% endblock %}
+
+{% block main %}
+
+    <div id="main">
+        <video id="background-video" autoplay loop muted poster="static/images/arena2.png">
+            <source src="static/videos/vid_random.mp4" type="video/mp4">
+        </video>
+        <audio id="bgaudio" src="static/sounds/reveal.mp3" loop></audio>
+        <audio id="clickaudio" src="static/sounds/click.mp3"></audio>
+        <p id="back" class="back" style="margin: 48% 91% 0 0; position: relative; z-index: 3; padding: 0;">GO BACK</p>
+        <p class="back" id="speaker" style="margin: -1.9% 0 0 12%; z-index: 3;">SOUND OFF</p>
+        <div class="vs_bg_left" id="vs_bg_left" style="animation: none !important;"></div>
+        <div class="vs_bg_right" id="vs_bg_right" style="animation: none !important;"></div>
+        <div class="left_artist2" id="left_artist2" style="margin: -44% 0 0 -2%;">
+            <h4 id="h4">Artist #1</h4>
+            <form autocomplete="off">
+                <div class="autocomplete">
+                    <textarea id="artist1" style="width: 85%; padding-top: 17%; margin-left: -5%;" rows="3">?</textarea>
+                </div>
+                <div class="fade2" id="fade2" style="margin: 0% 25% 0 48%;">
+                    <input onclick="clearInput()" value="CHANGE ARTISTS" class="edit_btn" type="button">
+                    <input onclick="saveArtists()" value="SAVE" class="save_btn" type="button">
+                    <p class="save" ">CLICK SAVE TO CONTINUE</p>
+                </div>
+            </form>
+            <p class="vs2" id="vs2" style="margin: -52% 0 0 52%; z-index: 0;">VS</p>
+        </div>
+        <div id="divMiddle" class="middle" style="z-index: 2; opacity: 100%;">
+            <div id="genreForm" class="genreForm">
+                <h4 style="margin-bottom: 10%; padding-top: 10%;">Select Genre</h4>
+                <form autocomplete="off">
+                    <div class="autocomplete" style="z-index: 2;">
+                        <textarea id="myInput" onchange="fadeIn()" style="margin: -1% 0 -3% 0; width: 85%;" placeholder="Type Music Genre Here..." rows="3"></textarea>
+                    </div>
+                    <div class="fade" id="divGenre" style="z-index: -1; width: 50%; margin: 3% 40% 0 25%;">
+                        <input onclick="clearGenre()" value="CHANGE GENRE" id="clearbtn" class="edit_btn" style="padding: 2%; width: 45%;" type="button">
+                        <input onclick="saveGenre()" value="SAVE" class="save_btn" style="padding: 2.5%; width: 30%;" type="button">
+                        <p class="save">CLICK SAVE TO CONTINUE</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="right_artist2" id="right_artist2" style="margin: -80.3% 0 0 50%;">
+            <h4>Artist #2</h4>
+            <textarea id="artist2" style="width: 85%; padding-top: 17%; margin-left: -5%;" rows="3";>?</textarea>
+        </div>
+    </div>
+
+    <!-- Autocomplete search -->
+    <script type="text/javascript">
+        function autocomplete(inp, arr) {
+        var currentFocus;
+        var bgaudio = document.getElementById("bgaudio");
+            bgaudio.volume = 0.5;
+            bgaudio.play();
+        inp.addEventListener("input", function(e) {
+            var a, b, i, val = this.value;
+            closeAllLists();
+            if (!val) { return false;}
+            currentFocus = -1;
+            a = document.createElement("DIV");
+            a.setAttribute("id", this.id + "autocomplete-list");
+            a.setAttribute("class", "autocomplete-items");
+            this.parentNode.appendChild(a);
+            for (i = 0; i < arr.length; i++) {
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                b = document.createElement("DIV");
+                b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                b.innerHTML += arr[i].substr(val.length);
+                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                b.addEventListener("click", function(e) {
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    closeAllLists();
+                });
+                a.appendChild(b);
+                }
+            }
+        });
+        inp.addEventListener("keydown", function(e) {
+            var x = document.getElementById(this.id + "autocomplete-list");
+            if (x) x = x.getElementsByTagName("div");
+            if (e.keyCode == 40) {
+                currentFocus++;
+                addActive(x);
+            } else if (e.keyCode == 38) {
+                currentFocus--;
+                addActive(x);
+            } else if (e.keyCode == 13) {
+                e.preventDefault();
+                if (currentFocus > -1) {
+                if (x) x[currentFocus].click();
+                }
+            }
+        });
+        function addActive(x) {
+            if (!x) return false;
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            x[currentFocus].classList.add("autocomplete-active");
+        }
+        function removeActive(x) {
+            for (var i = 0; i < x.length; i++) {
+            x[i].classList.remove("autocomplete-active");
+            }
+        }
+        function closeAllLists(elmnt) {
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+            if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+            }
+            }
+        }
+        document.addEventListener("click", function (e) {
+            closeAllLists(e.target);
+        });
+        }
+        var genre_index = [
+            {% for genre in genres %}
+                "{{ genre }}",
+            {% endfor %}
+            ];
+        autocomplete(document.getElementById("myInput"), genre_index);
+    </script>
+
+    <!-- Buttons genre fade in -->
+    <script type="text/javascript">
+        function fadeIn() {
+            var genre = document.getElementById("myInput");
+            var div = document.getElementById("divGenre");
+            const myTimeout = setTimeout(update, 500);
+            if (genre.value != "") {
+                div.classList.add("FadeIn");
+            }
+            function update() {
+                div.style.zIndex = "3";
+            }
+        }
+    </script>
+
+    <!-- Clear genre search -->
+    <script type="text/javascript">
+        function clearGenre() {
+            var genre = document.getElementById("myInput");
+            var div = document.getElementById("divGenre");
+            if (genre.value != "") {
+                genre.value = "";
+            }
+            div.classList.remove("FadeIn");
+            div.classList.add("FadeOut");
+            div.style.zIndex = "-1";
+        }
+    </script>
+
+    <!-- Save genre -->
+    <script type="text/javascript">
+        function saveGenre() {
+            var genre = document.getElementById("myInput");
+            var div = document.getElementById("genreForm");
+            if (genre.value != "") {
+                genre.setAttribute('disabled', '')
+                document.getElementById("divGenre").classList.remove("FadeIn");
+                document.getElementById("divGenre").classList.add("FadeOut");
+                document.getElementById("divMiddle").style.animation = "fadeout 0.3s forwards linear";
+                document.getElementById("vs_bg_left").style.animation = "split_down 0.5s forwards linear";
+                document.getElementById("vs_bg_left").style.animationDelay = "0.5s";
+                document.getElementById("vs_bg_right").style.animation = "split_up 0.5s forwards linear";
+                document.getElementById("vs_bg_right").style.animationDelay = "0.5s";
+                document.getElementById("left_artist2").style.animation = "fadein 0.2s forwards linear";
+                document.getElementById("left_artist2").style.animationDelay = "1.3s";
+                document.getElementById("right_artist2").style.animation = "fadein 0.2s forwards linear";
+                document.getElementById("right_artist2").style.animationDelay = "2.5s";
+                document.getElementById("vs2").style.animation = "fadein 0.2s forwards linear";
+                document.getElementById("vs2").style.animationDelay = "1.9s";
+                document.getElementById("fade2").style.animation = "fadein 1s forwards linear";
+                document.getElementById("fade2").style.animationDelay = "8s";
+                document.getElementById("vs_bg_left").style.zIndex = "-1";
+                document.getElementById("vs_bg_right").style.zIndex = "-1";
+                document.getElementById("right_artist2").style.zIndex = "-1";
+                document.getElementById("fade2").style.zIndex = "2";
+                document.getElementById("divMiddle").style.zIndex = "-1";
+            }
+            $.ajax({
+                url: '/random',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ 'genre': genre.value }),
+                success: function(response) {
+                    document.getElementById("artist1").innerHTML = response.artist;
+                    document.getElementById("artist2").innerHTML = response.opponent;
+                    document.getElementById("divArtist").style.animation = "fadein 0.5 forwards linear";
+
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+
+    <!-- Clear artists -->
+    <script type="text/javascript">
+        function clearInput() {
+            var genre = document.getElementById("myInput");
+            var artist1 = document.getElementById("artist1");
+            var artist2 = document.getElementById("artist2");
+            if (artist1.value != "") {
+                artist1.innerHTML = "?";
+            }
+            if (artist2.value != "") {
+                artist2.innerHTML = "?";
+            }
+            $.ajax({
+                url: '/random',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ 'genre': genre.value }),
+                success: function(response) {
+                    artist1.innerHTML = response.artist;
+                    artist2.innerHTML = response.opponent;
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+
+    <!-- Save artists -->
+    <script type="text/javascript">
+        function saveArtists() {
+            var artist = document.getElementById("artist1").value;
+            var opponent = document.getElementById("artist2").textContent;
+            sessionStorage.setItem("artist", artist);
+            sessionStorage.setItem("opponent", opponent);
+
+            var fade = document.getElementById("main");
+            var intervalID = setInterval(function () {
+                if (!fade.style.opacity) {
+                    fade.style.opacity = 1;
+                }
+                if (fade.style.opacity > 0) {
+                    fade.style.opacity -= 0.1;
+                }
+                else {
+                    clearInterval(intervalID);
+                }
+            }, 50);
+
+            const timeout = setTimeout(redirect, 300);
+            function redirect() {
+                window.location.href = "/fights";
+            }
+        }
+    </script>
+
+    <!-- Back to mode page -->
+    <script type="text/javascript">
+        document.getElementById("back").addEventListener("click", back);
+        function back() {
+            var clickaudio = document.getElementById("clickaudio");
+            clickaudio.volume = 0.2;
+            clickaudio.play();
+            var fade = document.getElementById("main");
+            var intervalID = setInterval(function () {
+                if (!fade.style.opacity) {
+                    fade.style.opacity = 1;
+                }
+                if (fade.style.opacity > 0) {
+                    fade.style.opacity -= 0.1;
+                }
+                else {
+                    clearInterval(intervalID);
+                }
+            }, 50);
+
+            const timeout = setTimeout(redirect, 300);
+            function redirect() {
+                window.location.href = "/mode";
+            }
+        }
+    </script>
+
+    <!-- Sound On/Off -->
+    <script type="text/javascript">
+        document.getElementById("speaker").addEventListener("click", sound);
+        var bgaudio = document.getElementById("bgaudio");
+        var speakerBTN = document.getElementById("speaker");
+        function sound() {
+            if (speakerBTN.innerHTML != "SOUND ON") {
+                bgaudio.pause();
+                speakerBTN.innerHTML = "SOUND ON";
+            }
+            else {
+                bgaudio.play();
+                speakerBTN.innerHTML = "SOUND OFF";
+            }
+        }
+    </script>
+
+    <!-- Page fade in -->
+    <script type="text/javascript">
+        document.body.className = "hidden";
+        const timeout_in = setTimeout(fadein, 500);
+        function fadein() {
+            document.body.className = "visible";
+        }
+    </script>
+
+{% endblock %}
