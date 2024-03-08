@@ -1,0 +1,1098 @@
+body {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+html {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+#main {
+    font-family: "Montserrat", sans-serif;
+    height: 100vh;
+}
+
+h1 {
+    font-family: "Tarrget Italic";
+    font-style: italic;
+    margin-top: -2.2em;
+    font-size: 80px;
+    color: lightgrey;
+    -webkit-text-stroke-width: 2.5px;
+    -webkit-text-stroke-color: peru;
+    text-shadow: 8px 8px black;
+    animation: logo 1.5s forwards linear;
+    animation-delay: 1s;
+    transition: opacity 1.5s;
+    opacity: 0;
+    transform: scale(1, 1.5);
+    -webkit-transform: scale(1, 1.5);
+    -moz-transform: scale(1, 1.5);
+    -o-transform: scale(1, 1.5);
+    transform-origin: 0% 70%;
+}
+
+@keyframes logo {
+  from {opacity : 0%;}
+  to {opacity: 100%;}
+}
+
+h4 {
+    font-size: 32px;
+    letter-spacing: 0.5px;
+    color: white;
+    z-index: 1;
+    position: relative;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    text-shadow:
+      0 0 0.5px white,
+      0 0 1px white,
+      0 0 1.5px white,
+      0 0 2px DarkCyan,
+      0 0 3px DarkCyan,
+      0 0 4px DarkCyan,
+      0 0 7px DarkCyan,
+      0 0 9px DarkCyan;
+    width: 100%;
+    margin-top: 3%;
+    animation: fadein 0.5s forwards linear;
+    animation-delay: 1.3s;
+    transition: opacity 0.5s;
+    opacity: 0%;
+}
+
+.typing {
+    font-family: "Ming Imperial";
+    font-size: 280px;
+    margin: 0 auto;
+    background: radial-gradient(yellow, orange);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    text-shadow: 1.5px 1.5px 5px red;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: yellow;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: type 1s steps(4, end);
+    text-align: center;
+}
+
+@keyframes type {
+    from {width: 0;}
+    to {width: 500px;}
+}
+
+#press {
+    font-family: "Vehicle Breaks Down";
+    font-size: 30px;
+    margin-top: 18%;
+    color: lightgray;
+    animation: enter 1.9s linear infinite;
+    animation-delay: 3.2s;
+    opacity: 0%;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+@keyframes enter {
+    0% {opacity: 0%;}
+    50% {opacity: 100%;}
+    100% {opacity: 0%;}
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    opacity: 65%;
+    text-align: right;
+    font-family: "Monsterrat" sans serif;
+    font-size: small;
+    padding: 5px;
+    z-index: -1;
+  }
+
+#background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+
+    @media (max-width: 750px) {
+        #background-video { display: none; }
+        body {
+          background: url("static/images/arena3.png") no-repeat;
+          background-size: cover;
+        }
+    }
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.visible {
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.menu {
+    width: 100vw;
+    opacity: 0%;
+	position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: linear-gradient(to top, transparent 5%, slategray 95%);
+    animation: entrance 0.75s forwards linear;
+    animation-delay: 0.5s;
+    transition: opacity 0s;
+    z-index: 0;
+}
+
+@keyframes entrance {
+    0% {top: 0%; height: 0%;}
+    100% {top: 0%; height: 100%; opacity: 95%;}
+}
+
+.left {
+    width: 40%;
+    height: 60%;
+    margin-top: 1.5%;
+    margin-left: 4.5%;
+    z-index: 1;
+    position: absolute;
+    vertical-align: top;
+    justify-content: center;
+    display: flex;
+    animation: fadein 0.5s forwards linear;
+    animation-delay: 1.5s;
+    transition: opacity 0.5s;
+    opacity: 0%;
+}
+
+.right {
+    width: 40%;
+    height: 60%;
+    margin-top: 1.5%;
+    margin-left: 54%;
+    z-index: 1;
+    position: absolute;
+    vertical-align: top;
+    justify-content: center;
+    display: flex;
+    animation: fadein 0.5s forwards linear;
+    animation-delay: 1.5s;
+    transition: opacity 0.5s;
+    opacity: 0%;
+}
+
+.mode {
+    width: 80%;
+    position: absolute;
+    margin-top: 20%;
+    box-shadow: 0 0 25px 2px white;
+    animation: fadein 0.4s forwards linear;
+    animation-delay: 1.5s;
+    transition: opacity 0.5s, transform 0.2s;
+    opacity: 0%;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.mode:hover {
+    transform: scale(1.1);
+}
+
+.title {
+    font-family: "Tarrget";
+    font-style: italic;
+    width: 100%;
+    position: absolute;
+    font-size: 50px;
+    color:lightgrey;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: peru;
+    text-shadow: 3px 3px black;
+    animation: fadein 0.5s forwards linear;
+    animation-delay: 1.5s;
+    transition: opacity 0.5s;
+    opacity: 0%;
+}
+
+form {
+    z-index: 1;
+    position: relative;
+}
+
+input {
+    border: none;
+    margin: 10px;
+    font-size: 16px;
+    border: none;
+    resize: none;
+}
+
+input[type=text], #opponent, #fighter1, #fighter2, textarea, #winner {
+    margin: 2% 0% 8% 0%;
+    letter-spacing: -2px;
+    word-spacing: -6px;
+    font-family: "Paladins", sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    font-style: italic;
+    text-align: center;
+    vertical-align: bottom;
+    outline: none;
+    text-transform: uppercase;
+    -webkit-text-stroke: 0.1px #525252;
+    caret-color: white;
+    color: gainsboro;
+    background: transparent;
+    text-shadow: 2.5px 2.5px black;
+    animation: fadein 0.2s forwards linear;
+    animation-delay: 1.29s;
+    transition: opacity 0.5s;
+    opacity: 0%;
+    border: none;
+    resize: none;
+    line-height: 1;
+}
+
+::placeholder {
+    padding-top: 2%;
+    color: #ebebeb;
+    background: transparent;
+    font-size: 18px;
+    font-style: italic;
+    -webkit-text-stroke: 0px;
+    text-shadow: 0px 0px;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    opacity: 100%;
+}
+
+::-ms-input-placeholder {
+    color: #ebebeb;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+}
+
+.autocomplete {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: none;
+    z-index: 3;
+    top: 60%;
+    left: 10%;
+    right: 10%;
+    text-align: center;
+    color: #ebebeb;
+    font-style: italic;
+    font-family: "Paladins", sans-serif;
+    font-weight: 100;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+}
+
+.autocomplete-items div {
+    padding: 2%;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.autocomplete-items div:hover {
+    background-color: DarkCyan;
+    color: white;
+    font-size: x-large;
+}
+
+.autocomplete-active {
+    background-color: DarkCyan !important;
+    color: white;
+    font-size: x-large;
+}
+
+.middle {
+    width: 100%;
+    height: 100%;
+    margin-left: 50%;
+    transform: translate(-50% , -50%);
+    position: relative;
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    margin-left: 50%;
+    transform: translate(-50% , -50%);
+    position: relative;
+    text-align: center;
+}
+
+.vs {
+    font-family: "Harukaze";
+    font-size: 160px;
+    font-weight: 700;
+    margin-left: -1%;
+    animation: fadein 0.2s forwards linear;
+    animation-delay: 1.9s;
+    transition: opacity 0.5s;
+    opacity: 0%;
+    background: -webkit-linear-gradient(yellow 0%, gold 42%, red 58%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.left_artist {
+    width: 50%;
+    height: 50%;
+    margin: 7% 0% 0% -2.5%;
+    z-index: 1;
+    position: relative;
+    animation: fadein 0.2s forwards linear;
+    animation-delay: 1s;
+    transition: opacity 0.5s;
+    opacity: 0%;
+}
+
+.right_artist {
+    width: 50%;
+    height: 50%;
+    margin: -91.5% 0% 0% 50%;
+    z-index: 1;
+    position: relative;
+    animation: fadein 0.2s forwards linear;
+    animation-delay: 2.5s;
+    transition: opacity 0.5s;
+    opacity: 0%;
+}
+
+.vs_bg_left{
+    width: 100vw;
+    height: 100vh;
+    opacity: 0%;
+	position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: -1;
+    animation: split_down 0.5s forwards linear;
+    animation-delay: 0.5s;
+    transition: opacity 0s;
+    background-image: linear-gradient(115deg, dimgray 50%, transparent 50%);
+}
+
+@keyframes split_down {
+    0% {width: 0%; opacity: 0%;}
+    100% {width: 100%; opacity: 70%;}
+}
+
+.vs_bg_right{
+    width: 100vw;
+    height: 100vh;
+    opacity: 0%;
+	position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: -1;
+    animation: split_up 0.5s forwards linear;
+    animation-delay: 0.5s;
+    transition: opacity 0s;
+    background-image: linear-gradient(115deg, transparent 50%, silver 50%);
+}
+
+@keyframes split_up {
+    0% {left: 100%; opacity: 0%;}
+    100% {left: 0%; opacity: 70%;}
+}
+
+.edit_btn {
+    width: 27%;
+    background-color: darkorange;
+    cursor: pointer;
+    margin: -5% 3% 3% 3%;
+    color: white;
+    font-size: medium;
+    text-align: center;
+    opacity: 100%;
+    padding: 1.5%;
+    border-radius: 10px;
+    box-shadow: 0 6px #999;
+}
+
+.edit_btn:hover {
+    background-color: #d47400;
+    color: white;
+}
+
+.edit_btn:active {
+    background-color: #d47400;
+    color: white;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.save_btn {
+    width: 20%;
+    background-color: DarkCyan;
+    cursor: pointer;
+    margin: -5% 3% 3% 3%;
+    color: white;
+    font-size: medium;
+    text-align: center;
+    opacity: 100%;
+    padding: 1.5%;
+    border-radius: 10px;
+    box-shadow: 0 6px #999;
+}
+
+.save_btn:hover {
+    background-color: #006666;
+    color: white;
+}
+
+.save_btn:active {
+    background-color: #006666;
+    color: white;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.fade {
+    width: 100%;
+    opacity: 100%;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+}
+
+.FadeOut {
+    animation: fadeout 0.5s linear forwards;
+}
+
+@keyframes fadeout {
+    0% {opacity: 100%;}
+    100% {opacity: 0%;}
+}
+
+.FadeIn {
+    animation: fadein 1s linear forwards;
+}
+
+@keyframes fadein {
+    0% {opacity: 0%;}
+    100% {opacity: 100%;}
+}
+
+.save {
+    letter-spacing: 0.5px;
+    font-family: "Vehicle Breaks Down";
+    font-size: 18px;
+    font-weight: thin;
+    margin-top: 2%;
+    color: white;
+    animation: enter 1.9s linear infinite;
+    opacity: 0%;
+    background: transparent;
+    border: none;
+}
+
+.speaker {
+    animation: fadein 0.5s linear forwards;
+    animation-delay: 3.2s;
+    opacity: 0%;
+    z-index: 1;
+    position: absolute;
+    cursor: pointer;
+}
+
+.back {
+    letter-spacing: 0.5px;
+    font-family: "Vehicle Breaks Down";
+    font-size: 18px;
+    font-weight: thin;
+    margin: 41% 0 0 1.5%;
+    color: white;
+    animation: fadein 0.5s linear forwards;
+    animation-delay: 3.2s;
+    opacity: 0%;
+    text-align: right;
+    z-index: 1;
+    position: absolute;
+    cursor: pointer;
+}
+
+.left_fight, .right_fight {
+    width: 50%;
+    height: 50%;
+    animation: fadein 1s forwards linear;
+    animation-delay: 1s;
+    transition: opacity 0.5s;
+    opacity: 0%;
+    position: relative;
+}
+
+.fighting {
+    position: relative;
+    z-index: -1
+}
+
+#countdown {
+    font-family: "Road Rage";
+    position: relative;
+    width: 100%;
+    text-align: center;
+    left: 50%;
+    top: -55%;
+    display: inline-block;
+    transform: translate(-50%, -50%);
+    transition: 1s;
+    font-size: 0vw;
+    opacity: 100%;
+    animation: fadeout 0.7s forwards linear;
+    animation-delay: 2s;
+    background: -webkit-linear-gradient(yellow 0%, gold 42%, red 72%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+#ready {
+    font-family: "Vehicle Breaks Down";
+    font-size: 30px;
+    -webkit-text-stroke-width: 0.4px;
+    -webkit-text-stroke-color: red;
+    margin: 3% 0 0 -1.6%;
+    color: #d47400;
+    animation: enter 1.9s linear infinite;
+    animation-delay: 3s;
+    opacity: 0%;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    position: relative;
+}
+
+iframe {
+    opacity: 0%;
+    padding-top: 20%;
+    width: 50%;
+    border-radius: 12px;
+}
+
+.score {
+    font-family: "Road Rage";
+    font-size: 54px;
+    font-style: italic;
+    margin-top: -1.9%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    transition: 1s;
+    opacity: 0%;
+    animation: fadein 1.5s linear forwards;
+    background: -webkit-linear-gradient(yellow 0%, gold 42%, red 72%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.FadeInDelayed {
+    animation: fadein 1s linear forwards;
+    animation-delay: 5.5s;
+}
+
+#wrapper {
+    text-align: center;
+    width: 100%;
+    height: 80%;
+    position: relative;
+    padding: 0;
+}
+
+#winner {
+    letter-spacing: -2px;
+    word-spacing: 0px;
+    font-family: "Paladins", sans-serif;
+    font-size: 50px;
+    font-weight: 800;
+    font-style: italic;
+    text-align: center;
+    vertical-align: bottom;
+    outline: none;
+    text-transform: uppercase;
+    -webkit-text-stroke: 0.1px #525252;
+    caret-color: white;
+    color: gainsboro;
+    background: transparent;
+    text-shadow: 2.5px 2.5px black;
+    animation: fadein 0.2s forwards linear;
+    animation-delay: 1.29s;
+    transition: opacity 0.5s;
+    opacity: 100%;
+    border: none;
+    resize: none;
+    line-height: 1;
+    position: relative;
+    padding-top: 0;
+    width: 90%;
+}
+
+#fighter1, #fighter2 {
+    margin: 0% 0% 8% 0%;
+    letter-spacing: -2px;
+    word-spacing: -6px;
+    font-family: "Paladins", sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    font-style: italic;
+    text-align: center;
+    vertical-align: bottom;
+    outline: none;
+    text-transform: uppercase;
+    -webkit-text-stroke: 0.1px #525252;
+    caret-color: white;
+    color: gainsboro;
+    background: transparent;
+    text-shadow: 2.5px 2.5px black;
+    animation: fadein 0.2s forwards linear;
+    animation-delay: 1.29s;
+    transition: opacity 0.5s;
+    opacity: 0%;
+    border: none;
+    resize: none;
+    line-height: 1;
+}
+
+#explain {
+    width: 50%;
+    margin: -38% 0% 0% 24.6%;
+    text-align: center;
+    vertical-align: middle;
+    font-family: "Vehicle Breaks Down";
+    font-weight: thin;
+    font-size: x-large;
+    color: #d47400;
+    animation: fadein 0.5s forwards linear;
+    animation-delay: 1.29s;
+    opacity: 0%;
+}
+
+.tracks {
+    position: relative;
+    border: none;
+    z-index: 3;
+    top: 30%;
+    left: 10%;
+    right: 10%;
+    text-align: center;
+    vertical-align: text-bottom;
+    color: #ebebeb;
+    font-style: italic;
+    font-family: "Paladins", sans-serif;
+    font-weight: 100;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    width: 80%;
+}
+
+.end_btns {
+    width: 20%;
+    background-color: DarkCyan;
+    cursor: pointer;
+    margin: -5% 3% 3% 3%;
+    color: white;
+    font-size: small;
+    text-align: center;
+    opacity: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 6px #999;
+    position: relative;
+    z-index: 0;
+}
+
+.end_btns:hover {
+    background-color: #006666;
+    color: white;
+    position: relative;
+    z-index: 3;
+}
+
+.end_btns:active {
+    background-color: #006666;
+    color: white;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+    position: relative;
+    z-index: 3;
+}
+
+.end {
+    padding: 0;
+    width: 100%;
+    height: 60%;
+    margin-top: -40%;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+}
+
+.back2 {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+#playlist {
+    opacity: 0%;
+    position: relative;
+    width: 100%;
+    height: 70%;
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
+}
+
+#playlistContent {
+    font-family: "Tarrget Italic";
+    color: #ebebeb;
+    background: rgba(0, 139, 139, 0.8);
+    position: relative;
+    font-size: 16px;
+    font-weight: 100;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    opacity: 100%;
+    overflow: scroll;
+    width: 80%;
+}
+
+td {
+    padding: 0.5%;
+}
+
+.back_noanim {
+    letter-spacing: 0.5px;
+    font-family: "Vehicle Breaks Down";
+    font-size: 18px;
+    font-weight: thin;
+    color: white;
+    opacity: 100%;
+    text-align: right;
+    position: relative;
+    cursor: pointer;
+    text-align: left;
+}
+
+.blink {
+    animation: enter 1.9s linear infinite;
+    animation-delay: 1s;
+}
+
+#urlO5, #urlO4, #urlO3, #urlO2, #urlO1, #urlA5, #urlA4, #urlA3, #urlA2, #urlA1 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    text-align: right;
+    margin: -9%;
+}
+
+.genreForm {
+    width: 60%;
+    height: 70%;
+    background: rgba(119, 136, 153, 0.5);
+    opacity: 0%;
+    animation: fadein 1.5s forwards linear;
+    margin: -20% 0 -41% 20%;
+    position: relative;
+    z-index: 1;
+}
+
+.left_artist2 {
+    width: 50%;
+    height: 50%;
+    margin: 7% 0% 0% -2.5%;
+    z-index: 1;
+    position: absolute;
+    transition: opacity 0.5s;
+    opacity: 0%;
+}
+
+.right_artist2 {
+    width: 50%;
+    height: 50%;
+    margin: 7% 0% 0% 50%;
+    z-index: 1;
+    position: absolute;
+    transition: opacity 0.5s;
+    opacity: 0%;
+}
+
+.vs2 {
+    width: 100%;
+    font-family: "Harukaze";
+    font-size: 160px;
+    font-weight: 700;
+    padding: 17%;
+    transition: opacity 0.5s;
+    opacity: 0%;
+    background: -webkit-linear-gradient(yellow 0%, gold 42%, red 58%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0;
+    margin: -49% 0 0 53%;
+}
+
+.fade2 {
+    width: 100%;
+    opacity: 100%;
+    text-align: center;
+    margin: 0% 20% 5% 0%;
+    position: relative;
+    animation: fadein 1s forwards linear;
+    animation-delay: 6s;
+    z-index: -1;
+    opacity: 0%;
+}
+
+@media all and (max-width: 1024px) and (max-height: 768px) and (orientation:landscape) {
+    body {
+        height: 100vh;
+        width: 100vw;
+      }
+
+      h1 {
+          font-size: 26px;
+          text-shadow: 3px 3px black;
+          opacity: 0%;
+      }
+
+      h4 {
+          font-size: x-large;
+          margin-top: 0%;
+      }
+
+      .typing {
+          font-size: 100px;
+          margin-top: -5%;
+      }
+
+      @keyframes type {
+          from {width: 0;}
+          to {width: 180px;}
+      }
+
+      #press {
+          font-size: 18px;
+          margin-top: 15%;
+      }
+
+      .footer {
+          font-size: x-small;
+      }
+
+      .title {
+        font-size: x-large;
+        margin-top: 5%;
+        text-shadow: 2px 2px black;
+      }
+
+      .vs {
+        font-size: 50px;
+        margin-left: 2.5%;
+      }
+
+      .right_artist {
+        margin-top: -102.5%;
+      }
+
+      .back {
+        font-size: small;
+        margin-left: -0.5%;
+      }
+
+      .autocomplete {
+        font-size: small;
+        margin-top: 0%;
+      }
+
+      #opponent {
+        margin-top: 2%;
+      }
+
+      ::placeholder {
+        font-size: small;
+      }
+
+      #opponent, #fighter1, textarea {
+        font-size: medium;
+        letter-spacing: 0px;
+        word-spacing: 0px;
+      }
+
+      #winner {
+        font-size: x-large;
+        top-margin: -10%;
+        letter-spacing: 0px;
+        word-spacing: 0px;
+      }
+
+      .save {
+        font-size: x-small;
+        margin-top: 5%;
+      }
+
+      .edit_btn {
+        font-size: x-small;
+        width: 40%;
+        padding: 1%;
+      }
+
+      .save_btn {
+        font-size: x-small;
+        width: 15%;
+        padding: 1%;
+      }
+
+      #explain, #ready {
+        font-size: medium;
+      }
+
+      .left_fight {
+        margin: 5% 0 0 -1%;
+      }
+
+      #Ascore {
+        margin: 0% 0 0 5%;
+        font-size: large;
+        margin-top: 2%;
+      }
+
+      #Oscore {
+        position: relative;
+        margin-top: -30%;
+        margin-left: 30%;
+        text-align: right;
+        font-size: large;
+      }
+
+      .right_fight {
+        padding-top: 2%;
+        padding-right: 10%;
+      }
+
+      #fighter1 {
+        margin-top: -8.5%;
+      }
+
+      #fighter2 {
+        margin-top: -45%;
+        margin-left: 25%;
+        font-size: small;
+        letter-spacing: 0px;
+        word-spacing: 0px;
+      }
+
+      .tracks {
+        top: 32%;
+        font-size: x-small;
+      }
+
+      iframe {
+        padding-top: 0%;
+        margin-top: 17%;
+        margin-bottom: -15%;
+        width: 75%;
+      }
+
+      #countdown {
+        margin-top: 3%;
+      }
+
+      #voteArtist, #voteOpponent {
+        margin-top: -60%;
+        margin-bottom: 10%;
+      }
+
+      .end_btns {
+        width: 100px;
+        padding: 1.2%;
+        font-size: 6px;
+      }
+
+      td {
+        font-size: small;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .back_noanim {
+        margin-top: 10%;
+      }
+
+      #back {
+        margin: 0;
+      }
+
+      .vs2 {
+        font-size: 46px;
+        margin-top: -50%;
+      }
+
+      .middle {
+        margin-top: 12%;
+      }
+
+      #speaker {
+        text-align: right;
+        position: relative;
+      }
+
+      #playlist {
+        margin-top: -20%;
+      }
+
+      #divMiddle {
+        margin-top: -25%;
+      }
+
+      #h4 {
+        margin-top: -4.5%;
+      }
+}
+
+@media only screen and (orientation:portrait) {
+    body {
+        height: 100vw;
+        width: 100vw;
+        transform: rotate(90deg);
+      }
+  }
