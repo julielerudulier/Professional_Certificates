@@ -1,4 +1,4 @@
-### HW06 - A Trip to the Vet
+### HW07 - LinkedList
 
 #### **Problem Description**
 
