@@ -1,0 +1,36 @@
+1: Application
+2: control.Alert
+3: VBox
+4: Application
+5: start
+6: Stage
+7: "Input value: $"
+8: TextField
+9: TextField
+10: exchangeBtn
+11: setText
+12: "Exchange"
+13: exchangeBtn.setOnAction
+14: event ->
+15: dollarsTxt.getCharacters()
+16: exchange
+17: Alert
+18: Alert
+19: Alert.AlertType.ERROR
+20: a.setTitle
+21: HBox
+22: HBox
+23: input.getChildren().addAll
+24: dollarsTxt
+25: VBox
+26: Vbox
+27: getChildren().addAll
+28: input
+29: exchangeBtn
+30: poundsLbl
+31: Scene
+32: Scene
+33: root
+34: stage.setTitle
+35: scene
+36: EXCHANGE_RATE
