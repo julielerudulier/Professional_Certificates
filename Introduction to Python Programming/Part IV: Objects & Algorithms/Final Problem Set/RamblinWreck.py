@@ -16,33 +16,21 @@
 # - Points For: Points scored by Georgia Tech
 # - Points Against: Points scored by the opponent
 
-#This line will open the file:
-#record_file = open('../resource/lib/public/georgia_tech_football.csv', 'r')
+This line will open the file:
+record_file = open('../resource/lib/public/georgia_tech_football.csv', 'r')
     
-def all_time_record(opponent):
-    file = open('../resource/lib/public/georgia_tech_football.csv', 'r')
-    
-    lines = []
-    for line in file:
-        lines.append(line.split(","))
-        
-    teams = {}
-    answer = ""
-    points = 0
-    
-    for i in range(1, len(lines)):
-        if lines[i][1] not in teams:
-            teams[lines[i][1]] = int(lines[i][3]) - int(lines[i][4])
-        elif lines[i][1] in teams:
-            teams[lines[i][1]] += (int(lines[i][3]) - int(lines[i][4]))
-     
-    for (key, value) in teams.items():
-        if value > points :
-            points = value
-            answer = key
-            
-    return answer
-    
+# Answer to question 1: Auburn
+# Answer to question 2: 1327
+# Answer to question 3: 1143
+# Answer to question 4: 513-226-27
+# Answer to question 5: 11-3-0
+# Answer to question 6: 302-177-10
+# Answer to question 7: 206-110-12
+# Answer to question 8: Duke
+# Answer to question 9: Carnegie Tech
+# Answer to question 10: 11
+# Answer to question 11: Tulane
+# Answer to question 12: Furman
 
 #Here, add any code you want to allow you to answer the
 #questions asked below over on edX. This is just a sandbox
