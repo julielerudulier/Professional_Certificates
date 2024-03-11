@@ -31,41 +31,16 @@ file = open('../resource/lib/public/babynames.csv', 'r')
 #for you to explore the dataset: nothing is required for
 #submission here.
 
-lines = []
-for line in file:
-        lines.append(line.split(","))
-     
-names = {}
-diff = {}
-result = "" 
 
-for i in range(len(lines)):
-    if lines[i][0] not in names.keys():
-        names[lines[i][0]] = {}
-        names[lines[i][0]]["gender 1"] = lines[i][2].strip()
-        names[lines[i][0]]["total 1"] = int(lines[i][1])
-        names[lines[i][0]]["diff"] = 0
-        names[lines[i][0]]["count"] = 1
-        
-    elif lines[i][0] in names.keys():
-        names[lines[i][0]]["count"] += 1
-        names[lines[i][0]]["diff"] += (int(lines[i][1]) - names[lines[i][0]]["total 1"])
-
-results = {}
-
-for name in names.keys():
-    if names[name]["count"] == 2:
-        if names[name]["diff"] < 0:
-            results[name] = names[name]["diff"] * (-1)
-        elif names[name]["diff"] > 0 or names[name]["diff"] == 0:
-            results[name] = names[name]["diff"] 
-            
-max = 100000000
-winner = ""
-
-for key, value in results.items():
-    if value < max:
-        max = value
-        winner = key
- 
-print(winner)
+# Answer to question 1: 15,790
+# Answer to question 2: 7,030,332
+# Answer to question 3: 159
+# Answer to question 4: Quinn
+# Answer to question 5: 672,960
+# Answer to question 6: U
+# Answer to question 7: 6,283
+# Answer to question 8: A
+# Answer to question 9: 983,627
+# Answer to question 10: Isabella
+# Answer to question 11: 42,623
+# Answer to question 12: Kylin
