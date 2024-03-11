@@ -1,4 +1,4 @@
-### Module 12 Assignment: Graph Traversals
+### Module 13 Assignment: Graph Traversals
 
 For this assignment, you will be implementing the **Breadth-First Search** and **Depth-First Search** graph traversal algorithms. This assignment has quite a few files in it, so please be sure to read ALL of the documentation given to you.
 
