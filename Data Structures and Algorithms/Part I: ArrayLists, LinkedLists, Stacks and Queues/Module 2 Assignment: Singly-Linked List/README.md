@@ -14,7 +14,7 @@ You will also implement two remove() methods. One will remove from the front and
 #### Garbage Collection
 Java will automatically mark objects for garbage collection based on whether there is any means of accessing the object. In other words, if we want to remove a node from the Singly-Linked List, we must remove all references to that node. What the "next" reference of that node points to does not particularly matter. As long as no references can reach the node, the node will be garbage collected eventually.
 
-#### General Tips**
+#### General Tips
 
 * Be sure to consider all edge cases! For example, when you add to the front or back of an empty Singly-Linked List, both the head and tail should be pointing to the same node. Similarly, when removing from the front or back of a Singly-Linked List containing only one node, both the head and tail should be set to null.
 
