@@ -62,43 +62,16 @@ public class SinglyLinkedList<T> {
 	size -= 1;
 	return removedData;
     }
-
-    /**
-     * Returns the head node of the list.
-     *
-     * For grading purposes only. You shouldn't need to use this method since
-     * you have direct access to the variable.
-     *
-     * @return the node at the head of the list
-     */
+	
     public SinglyLinkedListNode<T> getHead() {
-        // DO NOT MODIFY THIS METHOD!
         return head;
     }
 
-    /**
-     * Returns the tail node of the list.
-     *
-     * For grading purposes only. You shouldn't need to use this method since
-     * you have direct access to the variable.
-     *
-     * @return the node at the tail of the list
-     */
     public SinglyLinkedListNode<T> getTail() {
-        // DO NOT MODIFY THIS METHOD!
         return tail;
     }
 
-    /**
-     * Returns the size of the list.
-     *
-     * For grading purposes only. You shouldn't need to use this method since
-     * you have direct access to the variable.
-     *
-     * @return the size of the list
-     */
     public int size() {
-        // DO NOT MODIFY THIS METHOD!
         return size;
     }
 }
