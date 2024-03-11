@@ -1,4 +1,4 @@
-## Data Structures and Algorithms: ArrayLists, LinkedLists, Stacks and Queues
+## Data Structures and Algorithms I: ArrayLists, LinkedLists, Stacks and Queues
 
 This course provides a review of some important Java techniques and nuances in programming. 
 It introduces students to time complexity, and threads this concept throughout all data structures and algorithms presented in the course. 
