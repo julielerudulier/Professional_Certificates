@@ -32,12 +32,10 @@ public class MinHeap<T extends Comparable<? super T>> {
     }
 
     public T[] getBackingArray() {
-        // DO NOT MODIFY THIS METHOD!
         return backingArray;
     }
 
     public int size() {
-        // DO NOT MODIFY THIS METHOD!
         return size;
     }
         
