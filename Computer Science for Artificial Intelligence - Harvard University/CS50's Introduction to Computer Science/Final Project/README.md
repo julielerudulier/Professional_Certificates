@@ -8,7 +8,7 @@ https://www.youtube.com/watch?v=etunUsVZNxM
 #### Description:
 My final project for CS50 is called **'CS50 Music Battles'**. It’s a web application where music artists compete with each other on a musical level. It’s meant to be fun and it’s a great way to discover new artists and new music.
 
-In July 2023, I was awarded a 'Data Analyst' certification by l'Ecole des Mines de Paris - PSL, and my final project was about building a music recommendation system based on three different machine learning algorithms.
+In July 2023, I obtained a 'Data Analyst Certificate' delivered by l'Ecole des Mines de Paris - PSL, and my final project was about building a music recommendation system based on three different machine learning algorithms.
 
 For my CS50 final project, I wanted to continue working with music datasets, as I've worked my whole professional career in music, but I also wanted to have a new approach to the project. This is why I decided to have a gaming approach to this app.
 
