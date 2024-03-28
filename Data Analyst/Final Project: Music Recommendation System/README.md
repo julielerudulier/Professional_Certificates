@@ -2,19 +2,39 @@
 
 This project was my final project for the Data Analyst Certificate I obtained from L'école des **Mines Paris PSL** in August 2023. It was **my FIRST coding project ever!**
 
-This project relies on Machine Learning and unsupervised learning algorithms, but the first half of the project was really based on data analysis and cleansing.
-
+The aim of this project was to build a music recommendation system based on data retrieved from Spotify and Twitter. I used two different ML approaches to solve this problem: clustering and a similarity matrix.
 
 ---
 
+#### Language used in this project:
+- Python
+  
+#### Framework:
+- Streamlit
+
+#### Librairies:
+- Sklearn
+- Yellowbrick
+- Pandas
+- Numpy
+- Requests
+- Json
+- Seaborn
+- Matplotlib
+- SciPy
+- Graphviz
+- Plotly Express
+
+#### Data:
+The database used in this project is a mix of multiple Spotify databases available on [Kaggle.com](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset). The final dataset contains more than 528,000 unique songs, 22,366 unique artists and 63 different genres.
+
+---
 
 #### About the project:
-
-  - The aim of this project was to build a music recommendation system based on data retrieved from Spotify and Twitter.
+The aim of this project was to build a music recommendation system based on data retrieved from Spotify and Twitter.
 I chose to group similar tracks automatically by running a k-means algorithm on the dataset, but I was not very successful in creating self-sufficient clusters. I was still able to use the clusters by adding manual steps and fine-tuning my algorithm to create the first part of the recommendation system.
 
-
-  - The second part was based on a similarity matrix. Using the Mahalanobis metric allowed my algorithm to return the best recommendations possible, given the limited number of songs avaible in my dataset.
+The second part was based on a similarity matrix. Using the Mahalanobis metric allowed my algorithm to return the best recommendations possible, given the limited number of songs avaible in my dataset.
 
 I achieved my goal as I was able to build a music recommendation system allowing users to choose between two songs similar to a seed song of their liking. Although the relevancy of the recommendations can always be discussed, my system was designed and adjusted so that the songs suggested to users could be considered the most interesting suggestions possible.
 
