@@ -14,7 +14,7 @@ For my CS50 final project, I wanted to continue working with music datasets, as 
 
 'CS50 Music Battles' is a playful web application of which the design was inspired by the infamous fighting video game series Tekken. As I'm currently taking CS50's Introduction to Artifical Intelligence with Python course, I designed all of the background videos, images and characters using online AI tools.
 
-I also designed this web app in the CS50 Codespace using Python, Flask, Jinja and Javascript (app.py file). The .csv database is a mix of multiple Spotify databases available on Kaggle.com. The cleansing and feature engineering phase was done outside of the CS50 Codespace using Anaconda / Jupyter Notebook. The dataset contains more than 528,000 unique songs, 22,366 unique artists and 63 different genres.
+I also designed this web app in the CS50 Codespace using Python, Flask, Jinja and JavaScript (app.py file). The .csv database is a mix of multiple Spotify databases available on Kaggle.com. The cleansing and feature engineering phase was done outside of the CS50 Codespace using Anaconda / Jupyter Notebook. The dataset contains more than 528,000 unique songs, 22,366 unique artists and 63 different genres.
 
 The very first page (index.html file) has users standing outside of the fighting arena. Once they click 'Enter', they land to the 'mode' page (mode.html file) where they are asked to choose between two gaming modes: the Artist Mode and the Random Mode.
 
