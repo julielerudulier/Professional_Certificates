@@ -13,7 +13,7 @@ The aim of this project was to build a music recommendation system based on data
 - Streamlit
 
 #### Librairies:
-- Sklearn
+- Scikit-learn
 - Yellowbrick
 - Pandas
 - Numpy
