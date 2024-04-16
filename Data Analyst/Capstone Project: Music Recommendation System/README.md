@@ -1,6 +1,6 @@
 ## Music Recommendation System
 
-This project was my final project for the Data Analyst Certificate I obtained from L'école des **Mines Paris PSL** in August 2023. It was **my FIRST coding project ever!**
+This project was my capstone project for the Data Analyst Certificate I obtained from L'école des **Mines Paris PSL** in August 2023. It was **my FIRST coding project ever!**
 
 The aim of this project was to build a music recommendation system based on data retrieved from Spotify and Twitter. I used two different ML approaches to solve this problem: clustering and a similarity matrix.
 
